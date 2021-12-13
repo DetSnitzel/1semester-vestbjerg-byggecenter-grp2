@@ -5,7 +5,7 @@ public class Product {
 	private String productID;
 	private String barcode;
 	private double price;
-	private ArrayList<Copy> copies;
+	private ArrayList<Copy> copies;	
 	
 	public String getProductID() {
 		return productID;
