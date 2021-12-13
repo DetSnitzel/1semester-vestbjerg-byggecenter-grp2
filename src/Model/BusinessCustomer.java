@@ -5,6 +5,7 @@ public class BusinessCustomer extends Person {
 	private double discount;
 	private String cvr;
 
+
 	public BusinessCustomer(String name, String phone, String address, String email, String postalCode,
 			String customerID, double discount, String cvr) {
 		super(name, phone, address, email, postalCode);
@@ -39,5 +40,5 @@ public class BusinessCustomer extends Person {
 	}
 
 	
-	
 }
+
