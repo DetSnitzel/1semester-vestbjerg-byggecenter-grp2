@@ -1,27 +1,31 @@
 package Model;
 
 public class PrivateCustomer extends Person{
-	private String phone; 
-	private String CusomerID;
-	private String Discount;
-	
-	public String getPhone() {
-		return phone;
+	private String customerID;
+	private String discount;
+
+	public PrivateCustomer(String customerID, String discount) {
+		super();
+		this.setCustomerID(customerID);
+		this.setDiscount(discount);
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+
+	public String getCustomerID() {
+		return customerID;
 	}
-	public String getCusomerID() {
-		return CusomerID;
+
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
 	}
-	public void setCusomerID(String cusomerID) {
-		CusomerID = cusomerID;
-	}
+
 	public String getDiscount() {
-		return Discount;
+		return discount;
 	}
+
 	public void setDiscount(String discount) {
-		Discount = discount;
+		this.discount = discount;
 	}
 }
+
+
  
