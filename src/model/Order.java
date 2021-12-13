@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Order {
@@ -12,6 +13,8 @@ public class Order {
 	private ArrayList<OrderLine> orderLines;
 	
 	public Order(Employee employee) {
+		this.date = LocalDate.now().toString();
+		this.total = 0;
 		this.employee = employee;
 		orderLines = new ArrayList<>();
 	}
