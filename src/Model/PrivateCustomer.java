@@ -4,10 +4,11 @@ public class PrivateCustomer extends Person{
 	private String customerID;
 	private String discount;
 
-	public PrivateCustomer(String customerID, String discount) {
-		super();
-		this.setCustomerID(customerID);
-		this.setDiscount(discount);
+	public PrivateCustomer(String name, String phone, String address, String email, String postalCode,
+			String customerID, String discount) {
+		super(name, phone, address, email, postalCode);
+		this.customerID = customerID;
+		this.discount = discount;
 	}
 
 	public String getCustomerID() {
