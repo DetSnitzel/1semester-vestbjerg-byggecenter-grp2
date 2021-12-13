@@ -7,9 +7,11 @@ import model.OrderContainer;
 public class OrderContainer {
 	private static OrderContainer instance;
 	private ArrayList<Order> orders;
+	private int id;
 	
 	private OrderContainer() {
         orders = new ArrayList<>();
+        id = 1;
     }
     
     public static OrderContainer getInstance() {
@@ -20,9 +22,8 @@ public class OrderContainer {
     }
     
     public boolean addOrder(Order order) {
-    	boolean added = true;
-    	orders.add(order);
-    	return added;
+    	order.setID(id++);
+    	return orders.add(order);
     }
 
     public ArrayList<Order> getList(){
