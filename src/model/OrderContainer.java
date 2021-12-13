@@ -1,8 +1,8 @@
-package Model;
+package model;
 import java.util.ArrayList;
 
-import Model.Order;
-import Model.OrderContainer;
+import model.Order;
+import model.OrderContainer;
 
 public class OrderContainer {
 	private static OrderContainer instance;

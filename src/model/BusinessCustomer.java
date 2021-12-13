@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class BusinessCustomer extends Person {
 	private String customerID;
