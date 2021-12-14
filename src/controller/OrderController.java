@@ -13,15 +13,14 @@ public class OrderController {
 	public OrderController() {
 		orderContainer = OrderContainer.getInstance();
 		productController = new ProductController();
-		employeeController = new EmployeeController();
+		employeeController = EmployeeController.getInstance();
 		customerController = new CustomerController();
 	}
 
-	public Order createOrder(Employee employeeID) {
-		this.order = new Order(employeeID);
-
+	public Order createOrder() {
+		Employee employee = employeeController.getLoggedInEmployee();
+		this.order = new Order(employee);
 		return this.order;
-
 	}
 
 	public PrivateCustomer addCustomer(String phone) {
@@ -29,6 +28,7 @@ public class OrderController {
 		if (res != null) {
 			order.addPerson(res);
 		}
+
 		return res;
 	}
 }

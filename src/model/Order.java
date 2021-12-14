@@ -34,4 +34,9 @@ public class Order {
 	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
+
+	public void addPerson(PrivateCustomer res) {
+		// TODO Auto-generated method stub
+		
+	}
 }
