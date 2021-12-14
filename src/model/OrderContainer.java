@@ -22,7 +22,7 @@ public class OrderContainer {
     }
     
     public boolean addOrder(Order order) {
-    	order.setID(id++);
+//    	order.setID(id++);
     	return orders.add(order);
     }
 
