@@ -1,7 +1,5 @@
 package tui;
 
-
-
 import java.util.Scanner;
 import controller.OrderController;
 
@@ -13,33 +11,15 @@ public class OrderTUI {
 	}
 
 	public void start() {
-		System.out.println("Order TUI: ");
-
 		orderMenu();
 	}
 
 	private void orderMenu() {
 		boolean exit = false;
-	
-		
+		writeOrderMenu();
+		int choice = inputIntFromScanner();3
 		while (!exit) {
-			int choice = writeOrderMenu();
-			switch (choice) {
-			case 1:
-				orderCtrl.createOrder();
-				System.out.println("Order is created: " + orderCtrl.getOrderNo());
-				
-				boolean addCustomer = false;
-				while (addCustomer == false && exit == false) {
-					System.out.println("Enter phone number of customer");
-					Scanner scanCustomer = new Scanner(System.in);
-					String phone = scanCustomer.nextLine();
-					orderCtrl.addCustomer(phone);
-					PrivateCustomer pc = orderCtrl.addCustomer(phone);
-					
-				}
-			
-			
+			if (choice == 1) {
 				orderMenuSelection();
 				choice = -1;
 			} else if (choice == 2) {
@@ -63,24 +43,24 @@ public class OrderTUI {
 		System.out.print("Choose an option: ");
 		System.out.println();
 	}
-
 	private void findCustomerMenu() {
 		System.out.println();
 		System.out.println("Search after: ");
 		System.out.println("Options: 0, 1");
 		System.out.println("(1) Search phoneNo");
 		System.out.println("(0) Previous menu");
-
-		int x = inputIntFromScanner();
-		if (x == 1) {
-			System.out.println("The persons phonenumber :  ");
-			String phone = userPhoneNumber();
-			phoneNumberFromUser(phone);
-			findCustomer(phone);
-		} else if (x == 0) {
-			orderMenuSelection();
-		}
-	}
+	
+	int x = inputIntFromScanner();
+    if(x == 1) {
+        System.out.println("The persons phonenumber :  ");
+        String phone = userPhoneNumber();
+        phoneNumberFromUser(phone);
+        findCustomer(phone);
+    }
+    else if(x == 0) {
+        orderMenuSelection();
+    }
+}
 
 	private String userPhoneNumber() {
 		// TODO Auto-generated method stub
@@ -89,14 +69,14 @@ public class OrderTUI {
 
 	private void phoneNumberFromUser(String phone) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void findCustomer(String phone) {
-		if (orderCtrl.findCustomerByPhone(phone)) {
-
+		if(orderCtrl.findCustomerByPhone(phone)) {
+			
 		}
-
+		
 	}
 
 	private int inputIntFromScanner() {
