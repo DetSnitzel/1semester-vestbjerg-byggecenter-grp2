@@ -10,6 +10,8 @@ public class MainMenuTUI {
 	public static void main(String[] args) {
 		MainMenuTUI mainMenuTUI = new MainMenuTUI();
 		orderTUI = new OrderTUI();
+		tryMe = new TryMe();
+				
 		mainMenuTUI.start();
 		
 }
