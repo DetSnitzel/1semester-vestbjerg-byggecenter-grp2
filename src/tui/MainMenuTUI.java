@@ -3,10 +3,12 @@ package tui;
 import java.util.Scanner;
 
 public class MainMenuTUI {
-	private OrderTUI orderTUI;
+	private static OrderTUI orderTUI;
 	public static void main(String[] args) {
 		MainMenuTUI mainMenuTUI = new MainMenuTUI();
+		orderTUI = new OrderTUI();
 		mainMenuTUI.start();
+		
 }
 	private void start() {
 		mainMenu();
@@ -24,7 +26,7 @@ public class MainMenuTUI {
 			System.out.println("has not been implemented yet");
 			break;
 			case 3: 
-			System.out.println("has not been implemented yet");
+			orderTUI.start();
 			break;
 			case 9:
 			orderTUI.start();
