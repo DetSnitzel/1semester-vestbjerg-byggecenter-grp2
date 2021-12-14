@@ -17,21 +17,18 @@ public class OrderController {
 		customerController = new CustomerController();
 	}
 
-	public Order createOrder(String employeeID) {
-		this.order = new Order();
+	public Order createOrder(Employee employeeID) {
+		this.order = new Order(employeeID);
 
 		return this.order;
 
 	}
 
-	public Customer addCustomer(String phone) {
-		Customer res = customerController.findCustomerByPhone(phone);
+	public PrivateCustomer addCustomer(String phone) {
+		PrivateCustomer res = customerController.findCustomerByPhone(phone);
 		if (res != null) {
 			order.addPerson(res);
 		}
-
 		return res;
-
 	}
-
 }
