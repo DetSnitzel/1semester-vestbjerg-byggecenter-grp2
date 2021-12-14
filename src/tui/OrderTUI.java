@@ -17,7 +17,7 @@ public class OrderTUI {
 	private void orderMenu() {
 		boolean exit = false;
 		writeOrderMenu();
-		int choice = inputIntFromScanner();
+		int choice = inputIntFromScanner();3
 		while (!exit) {
 			if (choice == 1) {
 				orderMenuSelection();
