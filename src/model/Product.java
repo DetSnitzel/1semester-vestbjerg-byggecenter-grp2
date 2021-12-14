@@ -2,16 +2,16 @@ package model;
 import java.util.ArrayList;
 
 public class Product {
-	private String productID;
+	private String name;
 	private String barcode;
 	private double price;
 	private ArrayList<Copy> copies;	
 	
-	public String getProductID() {
-		return productID;
+	public String getName() {
+		return name;
 	}
-	public void setProductID(String productID) {
-		this.productID = productID;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getBarcode() {
 		return barcode;

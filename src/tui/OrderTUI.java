@@ -2,10 +2,14 @@ package tui;
 
 import java.util.Scanner;
 import controller.OrderController;
+import model.Order;
+import model.Person;
 import model.PrivateCustomer;
+import model.Product;
 
 public class OrderTUI {
 	private OrderController orderController;
+	private Order o;
 
 	public OrderTUI() {
 		orderController = new OrderController();
@@ -21,44 +25,74 @@ public class OrderTUI {
 			int selection = writeOrderMenu();
 			switch (selection) {
 			case 1:
-				orderController.createOrder();
-				System.out.println("Order is created. Now find customer by phone");
+				createOrder();
+			break;
+			}
+		}
+	}
 
-				boolean addPrivateCustomer = false;
-				while (addPrivateCustomer == false && running == true) {
-					System.out.println("Enter phone number of customer");
-					Scanner scanCustomer = new Scanner(System.in);
-					String phone = scanCustomer.nextLine();
-					orderController.addCustomer(phone);
-					PrivateCustomer pc = orderController.addCustomer(phone);
-					if (pc != null) {
-						System.out.println(pc.getName() + ": was added to order");
-						addPrivateCustomer = true;
-					}
+	private void createOrder() {
+		o = orderController.createOrder();
+		System.out.println("Order is created. Now find customer by phone");
+
+		addCustomer();
+		addProduct();
+		endOrder();
+	}
+
+
+	private void addCustomer() {
+		boolean addPrivateCustomer = false;
+		while (addPrivateCustomer == false) {
+			System.out.println("Enter phone number of customer");
+			Scanner scanCustomer = new Scanner(System.in);
+			String phone = scanCustomer.nextLine();
+			Person p = orderController.addCustomer(phone);
+			if (p != null) {
+				System.out.println(p.getName() + ": was added to order");
+				addPrivateCustomer = true;
+			}
+		}
+	}
+
+	private void addProduct() {
+
+		boolean finished = false;
+		while (!finished) {
+			System.out.println("Enter barcode of the product or type \"done\" to finish the order.");
+			Scanner scanProduct = new Scanner(System.in);
+			String barcode = scanProduct.nextLine();
+			if (barcode.equalsIgnoreCase("done")) {
+				break;
+			}
+			boolean addProduct = false;
+			while (addProduct == false) {
+				System.out.println("Amount: ");
+				Scanner scanQuantity = new Scanner(System.in);
+				int q = Integer.parseInt(scanQuantity.nextLine());
+				Product p = orderController.addProduct(barcode, q);
+				if (p != null) {
+					System.out.println(p.getName() + " was added to the order");
+					addProduct = true;
 				}
 			}
 		}
-
 	}
-
-//	private void orderMenu() {
-//		boolean exit = false;
-//		writeOrderMenu();
-//		int choice = inputIntFromScanner();3
-//		while (!exit) {
-//			if (choice == 1) {
-//				orderMenuSelection();
-//				choice = -1;
-//			} else if (choice == 2) {
-//				System.out.println("Not yet implemented ");
-//				choice = -1;
-//				orderMenu();
-//			} else {
-//				exit = true;
-//
-//			}
-//		}
-//	}
+	
+	private void endOrder() {
+		if(orderController.endOrder()) {
+			printOrder();
+		}
+	}
+	
+	private void printOrder() {
+		System.out.println("Order was finished");
+		System.out.println("-----------------------");
+		System.out.println("Customer: " + o.getCustomer().getName());
+		System.out.println("Employee: " + o.getEmployee().getEmployeeID() + " " + o.getEmployee().getName());
+		System.out.println();
+		System.out.println("Total price: " + o.getTotal());
+	}
 
 	private int writeOrderMenu() {
 		Scanner keyboard = new Scanner(System.in);
@@ -81,90 +115,4 @@ public class OrderTUI {
 
 	}
 }
-//	private void findCustomerMenu() {
-//		System.out.println();
-//		System.out.println("Search after: ");
-//		System.out.println("Options: 0, 1");
-//		System.out.println("(1) Search phoneNo");
-//		System.out.println("(0) Previous menu");
-//	
-//	int x = inputIntFromScanner();
-//    if(x == 1) {
-//        System.out.println("The persons phonenumber :  ");
-//        String phone = userPhoneNumber();
-//        phoneNumberFromUser(phone);
-//        findCustomer(phone);
-//    }
-//    else if(x == 0) {
-//        orderMenuSelection();
-//    }
-//}
-//
-//	private String userPhoneNumber() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	private void phoneNumberFromUser(String phone) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	private void findCustomer(String phone) {
-//		if(orderCtrl.findCustomerByPhone(phone)) {
-//			
-//		}
-//		
-//	}
-//
-////	private int inputIntFromScanner() {
-////		// Return user input as an int
-////		Scanner keyboard = new Scanner(System.in);
-////>>>>>>> 7b8682e1b579e88f7618facb32f5cd7ee466ef09
-////		while (!keyboard.hasNextInt()) {
-////			System.out.println("Input must be a number");
-////			keyboard.nextLine();
-////		}
-////		int selection = keyboard.nextInt();
-////		return selection;
-////		
-////	}
-////}
-//
-//				
-//
-////	private void findCustomerMenu() {
-////		System.out.println();
-////		System.out.println("Search after: ");
-////		System.out.println("Options: 0, 1");
-////		System.out.println("(1) Search phoneNo");
-////		System.out.println("(0) Previous menu");
-////
-////		int x = inputIntFromScanner();
-////		if (x == 1) {
-////			System.out.println("The persons phonenumber :  ");
-////			String phone = userPhoneNumber();
-////			phoneNumberFromUser(phone);
-////			findCustomer(phone);
-////		} else if (x == 0) {
-////			writeOrderMenu();
-////		}
-////	}
-//
-//
-////	private int inputIntFromScanner() {
-////		// Return user input as an int
-////		Scanner keyboard = new Scanner(System.in);
-////		while (!keyboard.hasNextInt()) {
-////			System.out.println("input has to be a number, try again");
-////			keyboard.nextLine();
-////		}
-////		return keyboard.nextInt();
-////	}
-////
-////	private void orderMenuSelection() {
-////		// TODO Auto-generated method stub
-////
-////	}
-////
-////}
+

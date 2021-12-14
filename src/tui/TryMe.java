@@ -31,9 +31,9 @@ public class TryMe {
 		product2.setPrice(100);
 		product3.setPrice(400);
 		
-		product1.setProductID("Hammer");
-		product2.setProductID("Sav");
-		product3.setProductID("Kegle");
+		product1.setName("Hammer");
+		product2.setName("Sav");
+		product3.setName("Kegle");
 		
 		product1.setBarcode("101");
 		product2.setBarcode("202");

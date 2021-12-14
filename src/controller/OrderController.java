@@ -23,12 +23,24 @@ public class OrderController {
 		return this.order;
 	}
 
-	public PrivateCustomer addCustomer(String phone) {
-		PrivateCustomer res = customerController.findCustomerByPhone(phone);
+	public Person addCustomer(String phone) {
+		Person res = customerController.findCustomerByPhone(phone);
 		if (res != null) {
 			order.addPerson(res);
 		}
 
 		return res;
+	}
+
+	public Product addProduct(String barcode, int q) {
+		Product res = productController.findProductByBarcode(barcode);
+		if (res != null) {
+			order.addProduct(res, q);
+		}
+		return productController.findProductByBarcode(barcode);
+	}
+
+	public boolean endOrder() {
+		return orderContainer.addOrder(order);
 	}
 }
