@@ -43,6 +43,41 @@ public class OrderTUI {
 		System.out.print("Choose an option: ");
 		System.out.println();
 	}
+	private void findCustomerMenu() {
+		System.out.println();
+		System.out.println("Search after: ");
+		System.out.println("Options: 0, 1");
+		System.out.println("(1) Search phoneNo");
+		System.out.println("(0) Previous menu");
+	
+	int x = inputIntFromScanner();
+    if(x == 1) {
+        System.out.println("The persons phonenumber :  ");
+        String phone = userPhoneNumber();
+        phoneNumberFromUser(phone);
+        findCustomer(phone);
+    }
+    else if(x == 0) {
+        orderMenuSelection();
+    }
+}
+
+	private String userPhoneNumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private void phoneNumberFromUser(String phone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void findCustomer(String phone) {
+		if(orderCtrl.findCustomerByPhone(phone)) {
+			
+		}
+		
+	}
 
 	private int inputIntFromScanner() {
 		// Return user input as an int
