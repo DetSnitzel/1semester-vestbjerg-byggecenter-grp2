@@ -1,16 +1,19 @@
 package tui;
 
 import java.util.Scanner;
+import tui.TryMe;
 
 public class MainMenuTUI {
 	private static OrderTUI orderTUI;
+	private static TryMe tryMe;
+	
 	public static void main(String[] args) {
 		MainMenuTUI mainMenuTUI = new MainMenuTUI();
 		orderTUI = new OrderTUI();
 		mainMenuTUI.start();
 		
 }
-	private void start() {
+	public void start() {
 		mainMenu();
 		
 	}
@@ -20,7 +23,7 @@ public class MainMenuTUI {
 			int choice = writeMainMenu();
 			switch (choice) {
 			case 1:
-			orderTUI.start();
+			System.out.println("has not been implemented yet");
 			break;
 			case 2:
 			System.out.println("has not been implemented yet");
@@ -28,7 +31,11 @@ public class MainMenuTUI {
 			case 3: 
 			orderTUI.start();
 			break;
+			case 4:
+			System.out.println("has not been implemented yet");
+			break;
 			case 9:
+			tryMe.generateTestData();
 			orderTUI.start();
 			default:
 			System.out.println("Exiting program.");

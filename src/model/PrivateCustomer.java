@@ -2,10 +2,10 @@ package model;
 
 public class PrivateCustomer extends Person{
 	private String customerID;
-	private String discount;
+	private int discount;
 
 	public PrivateCustomer(String name, String phone, String address, String email, String postalCode,
-			String customerID, String discount) {
+			String customerID, int discount) {
 		super(name, phone, address, email, postalCode);
 		this.customerID = customerID;
 		this.discount = discount;
@@ -19,11 +19,11 @@ public class PrivateCustomer extends Person{
 		this.customerID = customerID;
 	}
 
-	public String getDiscount() {
+	public int getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(String discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
 }
