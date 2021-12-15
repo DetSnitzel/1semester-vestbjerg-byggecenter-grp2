@@ -32,9 +32,9 @@ public class Product {
 		this.copies = copies;
 	}
 	
-	public ArrayList<Copy> getListCopy(){
-		return copies;
-	}
+//	public ArrayList<Copy> getListCopy(){
+//		return copies;
+//	}
 	
 	public void addCopy(Copy c) {
 		copies.add(c);

@@ -2,12 +2,12 @@ package model;
 
 public class BusinessCustomer extends Person {
 	private String customerID;
-	private double discount;
+	private int discount;
 	private String cvr;
 
 
 	public BusinessCustomer(String name, String phone, String address, String email, String postalCode,
-			String customerID, double discount, String cvr) {
+			String customerID, int discount, String cvr) {
 		super(name, phone, address, email, postalCode);
 		this.customerID = customerID;
 		this.discount = discount;
@@ -27,7 +27,7 @@ public class BusinessCustomer extends Person {
 		return discount;
 	}
 
-	public void setDiscount(double discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
 

@@ -29,7 +29,7 @@ public class OrderTUI {
 				createOrder();
 				break;
 			case 2:
-				errorMessage();
+				System.out.println("This has not yet been implemented.");
 				break;
 			case 3:
 				System.out.println("blabla");
@@ -51,7 +51,7 @@ public class OrderTUI {
 
 		boolean cont = addCustomer();
 		if (cont) {
-			//cont = addProduct();
+			// cont = addProduct();
 			addProduct();
 		}
 		if (cont) {
@@ -81,13 +81,13 @@ public class OrderTUI {
 	private void addProduct() {
 //		boolean res = true;
 		boolean finished = false;
-		while (!finished /*&& res*/) {
+		while (!finished /* && res */) {
 			System.out.println("Enter barcode of the product or type \"done\" to finish the order.");
 			Scanner scanProduct = new Scanner(System.in);
 			String barcode = scanProduct.nextLine();
 			if (barcode.equalsIgnoreCase("done")) {
 				break;
-			} 
+			}
 //			else if (barcode.equalsIgnoreCase("cancel")) {
 //				res = false;
 //			}
@@ -103,17 +103,13 @@ public class OrderTUI {
 				}
 			}
 		}
-		//return res;
+		// return res;
 	}
 
 	private void endOrder() {
 		if (orderController.endOrder()) {
 			printOrder();
 		}
-	}
-
-	private void cancelOrder() {
-
 	}
 
 	private void printOrder() {
@@ -144,9 +140,5 @@ public class OrderTUI {
 		int selection = keyboard.nextInt();
 		return selection;
 
-	}
-
-	public void errorMessage() {
-		System.out.println("This has not yet been implemented.");
 	}
 }

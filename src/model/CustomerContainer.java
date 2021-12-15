@@ -6,7 +6,7 @@ import model.Person;
 public class CustomerContainer {
 	private static CustomerContainer instance;
 	private ArrayList<Person> customers;
-	private int id;
+	
 	
 	private CustomerContainer() {
 		customers = new ArrayList<>();
