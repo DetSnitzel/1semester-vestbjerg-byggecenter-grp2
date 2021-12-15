@@ -10,6 +10,8 @@ public class CustomerController {
 	public CustomerController() {
 		customerContainer = CustomerContainer.getInstance();
 	}
+	
+	//Metoden returnere en person fra customerContainer hvis der fundet et Person objekt. 
 	public Person findCustomerByPhone(String phone) {
 		return customerContainer.findCustomerByPhone(phone);
 	}
