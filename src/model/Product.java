@@ -7,6 +7,12 @@ public class Product {
 	private double price;
 	private ArrayList<Copy> copies;	
 	
+	public Product(String name, String barcode, double price) {
+		super();
+		this.name = name;
+		this.barcode = barcode;
+		this.price = price;
+	}
 	public String getName() {
 		return name;
 	}

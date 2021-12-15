@@ -23,9 +23,9 @@ public class TryMe {
 		customer2 = new PrivateCustomer("Anna", "30231854", "Annavej 69", "Analgren@grenmail.dk", "9000", "2", 15);
 		customer3 = new PrivateCustomer("Caroline", "53352747", "Carovej 69", "Caro@bernmail.dk", "9000", "3", 20);
 		
-		product1 = new Product();
-		product2 = new Product();
-		product3 = new Product();
+		product1 = new Product("Hammer", "101", 50);
+		product2 = new Product("Sav", "202", 100);
+		product3 = new Product("Kegle", "303", 400);
 		
 		product1.setPrice(50);
 		product2.setPrice(100);

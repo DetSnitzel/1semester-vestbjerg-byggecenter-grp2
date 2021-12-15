@@ -43,4 +43,8 @@ public class OrderController {
 	public boolean endOrder() {
 		return orderContainer.addOrder(order);
 	}
+	public Order getOrder() {
+		// TODO Auto-generated method stub
+		return order;
+	}
 }

@@ -68,4 +68,16 @@ public class Order {
 		orderLines.add(ol);
 		total += ol.getSubtotal();
 	}
+
+	//Bruges i TestOrder
+	public Person getPerson() {
+		// TODO Auto-generated method stub
+		return customer;
+	}
+
+	//Bruges i TestOrder
+	public String getProduct() {
+		// TODO Auto-generated method stub
+		return getProduct();
+	}
 }
