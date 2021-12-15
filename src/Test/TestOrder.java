@@ -70,7 +70,7 @@ class TestOrder {
 	@Test
 	void addPersonByPhoneTest() {
 		orderController.addCustomer("30231854"); 
-		assertSame(p1, orderController.getOrder().getPerson());
+		assertSame(c1, orderController.getOrder().getPerson());
 	}
 	
 	@Test
@@ -81,6 +81,6 @@ class TestOrder {
 	
 	@Test 
 	void endOrderTest() {
-		productController.endOrder(); 
+		orderController.endOrder(); 
 	}
 }
