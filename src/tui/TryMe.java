@@ -20,8 +20,8 @@ public class TryMe {
 		
 		/*customer = new PrivateCustomer(name, phone, address, email, postalcode, customerID, discount); */
 		customer1 = new PrivateCustomer("Bob", "30222998", "Bobvej 69", "Bob@bob.dk", "9000", "1", 10);
-		customer2 = new PrivateCustomer("Anna", "30231854", "Bobvej 69", "Analgren@grenmail.dk", "9000", "2", 15);
-		customer3 = new PrivateCustomer("Caroline", "53352747", "Bobvej 69", "Caro@bernmail.dk", "9000", "3", 20);
+		customer2 = new PrivateCustomer("Anna", "30231854", "Annavej 69", "Analgren@grenmail.dk", "9000", "2", 15);
+		customer3 = new PrivateCustomer("Caroline", "53352747", "Carovej 69", "Caro@bernmail.dk", "9000", "3", 20);
 		
 		product1 = new Product();
 		product2 = new Product();

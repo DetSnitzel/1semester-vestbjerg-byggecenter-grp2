@@ -6,6 +6,7 @@ import model.Order;
 import model.Person;
 import model.PrivateCustomer;
 import model.Product;
+import tui.MainMenuTUI;
 
 public class OrderTUI {
 	private OrderController orderController;
@@ -26,45 +27,70 @@ public class OrderTUI {
 			switch (selection) {
 			case 1:
 				createOrder();
-			break;
+				break;
+			case 2:
+				errorMessage();
+				break;
+			case 3:
+				System.out.println("blabla");
+				break;
+			case 0:
+				running = false;
+				break;
+			default:
+				System.out.println("That is a wrong number to type.");
+				break;
+
 			}
 		}
 	}
 
 	private void createOrder() {
 		o = orderController.createOrder();
-		System.out.println("Order is created. Now find customer by phone");
+		System.out.println("Order is created. Type cancel to cancel order.");
 
-		addCustomer();
-		addProduct();
-		endOrder();
+		boolean cont = addCustomer();
+		if (cont) {
+			//cont = addProduct();
+			addProduct();
+		}
+		if (cont) {
+			endOrder();
+		}
 	}
 
-
-	private void addCustomer() {
+	private boolean addCustomer() {
+		boolean res = true;
 		boolean addPrivateCustomer = false;
-		while (addPrivateCustomer == false) {
+		while (addPrivateCustomer == false && res) {
 			System.out.println("Enter phone number of customer");
 			Scanner scanCustomer = new Scanner(System.in);
 			String phone = scanCustomer.nextLine();
 			Person p = orderController.addCustomer(phone);
-			if (p != null) {
+			if (phone.equalsIgnoreCase("cancel")) {
+				// writeOrderMenu();
+				res = false;
+			} else if (p != null) {
 				System.out.println(p.getName() + ": was added to order");
 				addPrivateCustomer = true;
 			}
 		}
+		return res;
 	}
 
 	private void addProduct() {
-
+//		boolean res = true;
 		boolean finished = false;
-		while (!finished) {
+		while (!finished /*&& res*/) {
 			System.out.println("Enter barcode of the product or type \"done\" to finish the order.");
 			Scanner scanProduct = new Scanner(System.in);
 			String barcode = scanProduct.nextLine();
 			if (barcode.equalsIgnoreCase("done")) {
 				break;
-			}
+			} 
+//			else if (barcode.equalsIgnoreCase("cancel")) {
+//				res = false;
+//			}
 			boolean addProduct = false;
 			while (addProduct == false) {
 				System.out.println("Amount: ");
@@ -77,14 +103,19 @@ public class OrderTUI {
 				}
 			}
 		}
+		//return res;
 	}
-	
+
 	private void endOrder() {
-		if(orderController.endOrder()) {
+		if (orderController.endOrder()) {
 			printOrder();
 		}
 	}
-	
+
+	private void cancelOrder() {
+
+	}
+
 	private void printOrder() {
 		System.out.println("Order was finished");
 		System.out.println("-----------------------");
@@ -114,5 +145,8 @@ public class OrderTUI {
 		return selection;
 
 	}
-}
 
+	public void errorMessage() {
+		System.out.println("This has not yet been implemented.");
+	}
+}
