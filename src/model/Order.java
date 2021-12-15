@@ -58,6 +58,10 @@ public class Order {
 	public void setID(int id) {
 		this.id = id;
 	}
+	
+	public Product getProduct() {
+		return orderLines.get(0).getProduct();
+	}
 
 	public void addProduct(Product p, int q) {
 		OrderLine ol = new OrderLine(p, q);
@@ -67,17 +71,5 @@ public class Order {
 	private void addOrderLine(OrderLine ol) {
 		orderLines.add(ol);
 		total += ol.getSubtotal();
-	}
-
-	//Bruges i TestOrder
-	public Person getPerson() {
-		// TODO Auto-generated method stub
-		return customer;
-	}
-
-	//Bruges i TestOrder
-	public String getProduct() {
-		// TODO Auto-generated method stub
-		return getProduct();
 	}
 }
