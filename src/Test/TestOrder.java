@@ -1,5 +1,7 @@
 package Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -37,8 +39,7 @@ class TestOrder {
 	public static void beforeClass() {
 		orderController = new OrderController(); 
 		customerController = new CustomerController(); 
-		productController = new ProductController(); 
-		//employeeController = new EmployeeController(); 
+		productController = new ProductController();  
 		productContainer = ProductContainer.getInstance(); 
 		customerContainer = CustomerContainer.getInstance();
 		
@@ -57,6 +58,8 @@ class TestOrder {
 		customerContainer.addCustomer(c1);
 		customerContainer.addCustomer(c2);
 		customerContainer.addCustomer(c3);
+		
+		o1 = orderController.createOrder(); 
 	}
 	@BeforeEach
 	void setUp() throws Exception{
@@ -65,24 +68,29 @@ class TestOrder {
 	
 	@Test 
 	void createOrderTest() {
-		orderController.createOrder(); 
+		assertNotNull(o1);
+		assertNotNull(o1.getEmployee());
 	}
 	
 	@Test
 	void addPersonByPhoneTest() {
 		orderController.addCustomer("30231854"); 
-		assertSame(c2, orderController.getOrder().getCustomer());
+		assertSame(c2, o1.getCustomer());
 	}
 	
 	@Test
 	void addProductToOrderTest() {
 		orderController.addProduct("202", 50);
-		assertSame(p2, orderController.getOrder().getProduct()); 
+		assertSame(p2, o1.getOrderLines().get(0).getProduct()); 
 	}
+	
 	
 	@Test 
 	void endOrderTest() {
+		int oldContSize = OrderContainer.getInstance().findAll().size();
 		orderController.endOrder(); 
-		assertTrue(orderController.endOrder()); 
+		int newContSize = OrderContainer.getInstance().findAll().size(); 
+		assertEquals(oldContSize + 1, newContSize);
+		assertSame(o1, OrderContainer.getInstance().findAll().get(newContSize -1));
 	}
 }
