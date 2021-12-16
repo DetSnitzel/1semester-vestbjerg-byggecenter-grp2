@@ -1,20 +1,38 @@
 package model;
 
+/**
+ * Denne klasse er en subklasse af superklassen Person, så den nedarver fra Person.
+ */
 public class BusinessCustomer extends Person {
 	private String customerID;
 	private int discount;
 	private String cvr;
 
-
+/**
+ * Constructor af klassen BusinessCustomer
+ * 
+ * @param name
+ * @param phone
+ * @param address
+ * @param email
+ * @param postalCode
+ * @param customerID
+ * @param discount
+ * @param cvr
+ */
 	public BusinessCustomer(String name, String phone, String address, String email, String postalCode,
 			String customerID, int discount, String cvr) {
 		super(name, phone, address, email, postalCode);
 		this.customerID = customerID;
 		this.discount = discount;
 		this.cvr = cvr;
-
 	}
 
+	/**
+	 *  
+	 * 
+	 * @return customerID af businessCustomer
+	 */
 	public String getCustomerID() {
 		return customerID;
 	}
