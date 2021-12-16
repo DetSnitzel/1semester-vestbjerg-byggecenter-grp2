@@ -58,7 +58,7 @@ public class Order {
 	public void setID(int id) {
 		this.id = id;
 	}
-	
+	//Bruges til testen 
 	public Product getProduct() {
 		return orderLines.get(0).getProduct();
 	}

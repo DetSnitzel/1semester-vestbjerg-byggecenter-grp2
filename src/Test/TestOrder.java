@@ -1,6 +1,7 @@
 package Test;
 
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
@@ -82,5 +83,6 @@ class TestOrder {
 	@Test 
 	void endOrderTest() {
 		orderController.endOrder(); 
+		assertTrue(orderController.endOrder()); 
 	}
 }

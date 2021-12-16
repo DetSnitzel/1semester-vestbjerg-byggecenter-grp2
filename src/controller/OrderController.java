@@ -46,7 +46,7 @@ public class OrderController {
 	
 	//Den her bruges i TestOrder, så den skal måske slettes 
 	public Order getOrder() {
-		// TODO Auto-generated method stub
+		
 		return order;
 	}
 }
