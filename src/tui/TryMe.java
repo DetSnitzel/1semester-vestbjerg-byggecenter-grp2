@@ -27,18 +27,6 @@ public class TryMe {
 		product2 = new Product("Sav", "202", 100);
 		product3 = new Product("Kegle", "303", 400);
 		
-		product1.setPrice(50);
-		product2.setPrice(100);
-		product3.setPrice(400);
-		
-		product1.setName("Hammer");
-		product2.setName("Sav");
-		product3.setName("Kegle");
-		
-		product1.setBarcode("101");
-		product2.setBarcode("202");
-		product3.setBarcode("303");
-		
 		cc.addCustomer(customer1);
 		cc.addCustomer(customer2);
 		cc.addCustomer(customer3);

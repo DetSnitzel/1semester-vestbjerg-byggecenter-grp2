@@ -43,6 +43,8 @@ public class OrderController {
 	public boolean endOrder() {
 		return orderContainer.addOrder(order);
 	}
+	
+	//Den her bruges i TestOrder, så den skal måske slettes 
 	public Order getOrder() {
 		// TODO Auto-generated method stub
 		return order;
