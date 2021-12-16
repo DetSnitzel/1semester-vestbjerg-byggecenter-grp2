@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
@@ -59,8 +60,11 @@ public class Order {
 		this.id = id;
 	}
 	//Bruges til testen 
-	public Product getProduct() {
-		return orderLines.get(0).getProduct();
+	//public Product getProduct() {
+		//return orderLines.get(0).getProduct();
+	//}
+	public List<OrderLine>getOrderLines(){
+		return new ArrayList<>(this.orderLines); 
 	}
 
 	public void addProduct(Product p, int q) {

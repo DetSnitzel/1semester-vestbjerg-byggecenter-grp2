@@ -45,8 +45,8 @@ public class OrderController {
 	}
 	
 	//Den her bruges i TestOrder, så den skal måske slettes 
-	public Order getOrder() {
+	//public Order getOrder() {
 		
-		return order;
-	}
+		//return order;
+	//}
 }

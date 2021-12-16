@@ -1,8 +1,9 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Order;
-import model.OrderContainer;
+//import model.OrderContainer;
 
 public class OrderContainer {
 	private static OrderContainer instance;
@@ -29,4 +30,8 @@ public class OrderContainer {
     public ArrayList<Order> getList(){
     	return orders;
   }
+
+	public List<Order> findAll() {
+		return new ArrayList<>(this.orders);
+	}
 }
