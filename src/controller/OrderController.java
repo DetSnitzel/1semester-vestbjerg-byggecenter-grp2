@@ -17,15 +17,15 @@ public class OrderController {
 		customerController = new CustomerController();
 	}
 
-	/*
-	 * Creating an order, and adds and employee
-	 */
+
 	public Order createOrder() {
 		Employee employee = employeeController.getLoggedInEmployee();
 		this.order = new Order(employee);
 		return this.order;
 	}
-	//Metoden finder og returnere en person via det indtastede telefonnr og derefter bliver personen tilføjet til ordren. 
+	/*
+	 * Creating an order, and adds and employee
+	 */
 	public Person addCustomer(String phone) {
 		Person res = customerController.findCustomerByPhone(phone);
 		if (res != null) {
