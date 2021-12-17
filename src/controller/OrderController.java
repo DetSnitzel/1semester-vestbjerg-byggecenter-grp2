@@ -16,7 +16,10 @@ public class OrderController {
 		employeeController = EmployeeController.getInstance();
 		customerController = new CustomerController();
 	}
-	//Metoden laver en ordre, hvor den tilføjer en Employee 
+
+	/*
+	 * Creating an order, and adds and employee
+	 */
 	public Order createOrder() {
 		Employee employee = employeeController.getLoggedInEmployee();
 		this.order = new Order(employee);
@@ -31,7 +34,13 @@ public class OrderController {
 
 		return res;
 	}
-	//Metoden finder et product via stregkoden og derefter tilføjer den resultatet af den indtastede barcode og antallet af produktet til ordren. 
+	
+	/**
+	 * The method will find a product using a barcode, and return the total amount of products to the order.
+	 * @param barcode
+	 * @param q
+	 * @return product
+	 */
 	public Product addProduct(String barcode, int q) {
 		Product res = productController.findProductByBarcode(barcode);
 		if (res != null) {
@@ -44,9 +53,5 @@ public class OrderController {
 		return orderContainer.addOrder(order);
 	}
 	
-	//Den her bruges i TestOrder, så den skal måske slettes 
-	//public Order getOrder() {
-		
-		//return order;
-	//}
+
 }

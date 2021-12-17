@@ -79,7 +79,7 @@ public class OrderTUI {
 	}
 
 	private void addProduct() {
-//		boolean res = true;
+
 		boolean finished = false;
 		while (!finished /* && res */) {
 			System.out.println("Enter barcode of the product or type \"done\" to finish the order.");
@@ -88,9 +88,7 @@ public class OrderTUI {
 			if (barcode.equalsIgnoreCase("done")) {
 				break;
 			}
-//			else if (barcode.equalsIgnoreCase("cancel")) {
-//				res = false;
-//			}
+
 			boolean addProduct = false;
 			while (addProduct == false) {
 				System.out.println("Amount: ");
@@ -103,7 +101,7 @@ public class OrderTUI {
 				}
 			}
 		}
-		// return res;
+		
 	}
 
 	private void endOrder() {
