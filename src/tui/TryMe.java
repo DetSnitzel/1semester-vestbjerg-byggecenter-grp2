@@ -15,10 +15,12 @@ public class TryMe {
 	}
 	
 	public void generateTestData() {
+		//Getting the singleton contatiner
 		CustomerContainer cc = CustomerContainer.getInstance();
 		ProductContainer pc = ProductContainer.getInstance();
 		
 		/*customer = new PrivateCustomer(name, phone, address, email, postalcode, customerID, discount); */
+		// Auto generated objects are being created to test the program.
 		customer1 = new PrivateCustomer("Bob", "30222998", "Bobvej 69", "Bob@bob.dk", "9000", "1", 10);
 		customer2 = new PrivateCustomer("Anna", "30231854", "Annavej 69", "Analgren@grenmail.dk", "9000", "2", 15);
 		customer3 = new PrivateCustomer("Caroline", "53352747", "Carovej 69", "Caro@bernmail.dk", "9000", "3", 20);

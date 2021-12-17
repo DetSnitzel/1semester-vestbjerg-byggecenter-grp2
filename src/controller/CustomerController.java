@@ -6,12 +6,17 @@ import model.PrivateCustomer;
 public class CustomerController {
 	private CustomerContainer customerContainer;
 	
-	
+	//Contructor
 	public CustomerController() {
 		customerContainer = CustomerContainer.getInstance();
 	}
 	
-	//Metoden returnere en person fra customerContainer hvis der fundet et Person objekt. 
+
+	/**
+	 * The method will return a person from a customerContainer, if a person object has been found.
+	 * @param phone
+	 * @return person
+	 */
 	public Person findCustomerByPhone(String phone) {
 		return customerContainer.findCustomerByPhone(phone);
 	}
