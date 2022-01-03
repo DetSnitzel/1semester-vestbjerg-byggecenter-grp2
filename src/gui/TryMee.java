@@ -53,6 +53,7 @@ public class TryMee {
 		for(PrivateCustomer customer: privateCustomerList) {
 			test += "Customer info:" + System.lineSeparator();
 			test += "------------" + System.lineSeparator();
+			test += "Name: " + customer.getName() + System.lineSeparator();
 			test += "Email: " + customer.getEmail() + System.lineSeparator();
 			test += "Phone: " + customer.getPhone() + System.lineSeparator();
 			test += "Address: " +  customer.getAddress() + System.lineSeparator();
