@@ -40,7 +40,7 @@ public class OrderTUI {
 			default:
 				System.out.println("That is a wrong number to type.");
 				break;
-
+				
 			}
 		}
 	}

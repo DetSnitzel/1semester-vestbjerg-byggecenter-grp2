@@ -1,8 +1,8 @@
-package tui;
+package gui;
 
 import model.*;
 
-public class TryMe {
+public class TryMee {
 	private PrivateCustomer customer1;
 	private PrivateCustomer customer2;
 	private PrivateCustomer customer3;
@@ -10,7 +10,7 @@ public class TryMe {
 	private Product product2;
 	private Product product3;
 	
-	public TryMe() {
+	public TryMee() {
 		
 	}
 	
