@@ -1,7 +1,7 @@
 package gui;
 
 import model.*;
-
+import java.util.ArrayList;
 public class TryMee {
 	private PrivateCustomer customer1;
 	private PrivateCustomer customer2;
@@ -14,10 +14,14 @@ public class TryMee {
 		
 	}
 	
-	public void generateTestData() {
+	public String generateTestData() {
 		//Getting the singleton container
 		CustomerContainer cc = CustomerContainer.getInstance();
 		ProductContainer pc = ProductContainer.getInstance();
+		ArrayList <PrivateCustomer> privateCustomerList = new ArrayList<>(); 
+		ArrayList <Product> productList = new ArrayList<>(); 
+		
+		
 		
 		/*customer = new PrivateCustomer(name, phone, address, email, postalcode, customerID, discount); */
 		// Auto generated objects are being created to test the program.
@@ -32,43 +36,76 @@ public class TryMee {
 		cc.addCustomer(customer1);
 		cc.addCustomer(customer2);
 		cc.addCustomer(customer3);
+	
 		
 		pc.addProduct(product1);
 		pc.addProduct(product2);
 		pc.addProduct(product3);
+		privateCustomerList.add(customer1);
+		privateCustomerList.add(customer2);
+		privateCustomerList.add(customer3);
+		productList.add(product1);
+		productList.add(product2);
+		productList.add(product3);
 		
-		System.out.println("Customer1 info:");
-		System.out.println("------------");
-		System.out.println(customer1.getName());
-		System.out.println(customer1.getPhone());
-		System.out.println(customer1.getAddress());
-		System.out.println(customer1.getEmail());
-		System.out.println(customer1.getPostalCode());
-		System.out.println(customer1.getCustomerID());
-		System.out.println(customer1.getDiscount());
-		System.out.println();
-		System.out.println("Customer2 info:");
-		System.out.println("------------");
-		System.out.println(customer2.getName());
-		System.out.println(customer2.getPhone());
-		System.out.println(customer2.getAddress());
-		System.out.println(customer2.getEmail());
-		System.out.println(customer2.getPostalCode());
-		System.out.println(customer2.getCustomerID());
-		System.out.println(customer2.getDiscount());
-		System.out.println();
-		System.out.println("Customer3 info:");
-		System.out.println("------------");
-		System.out.println(customer3.getName());
-		System.out.println(customer3.getPhone());
-		System.out.println(customer3.getAddress());
-		System.out.println(customer3.getEmail());
-		System.out.println(customer3.getPostalCode());
-		System.out.println(customer3.getCustomerID());
-		System.out.println(customer3.getDiscount());
-		System.out.println();
+		String test = "";
+	
+		for(PrivateCustomer customer: privateCustomerList) {
+			test += "Customer info:" + System.lineSeparator();
+			test += "------------" + System.lineSeparator();
+			test += "Email: " + customer.getEmail() + System.lineSeparator();
+			test += "Phone: " + customer.getPhone() + System.lineSeparator();
+			test += "Address: " +  customer.getAddress() + System.lineSeparator();
+			test += "PostalCode: " + customer.getPostalCode() + System.lineSeparator();
+			test += "CustomerID: " + customer.getCustomerID() + System.lineSeparator();
+			test += "Discount: " + customer.getDiscount() + "%" + System.lineSeparator();
+			test += System.lineSeparator();
+			
+		}
 		
-		System.out.println();
-		System.out.println("TEST DATA GENERATED");
+		for(Product product: productList) {
+			test += "Product info: " + System.lineSeparator();
+			test += "------------" + System.lineSeparator();
+			test += "Name: " + product.getName() + System.lineSeparator();
+			test += "Barcode: " +  product.getBarcode() + System.lineSeparator();
+			test += "Price: " + product.getPrice()  + System.lineSeparator();
+			test += System.lineSeparator();
+ 		}
+
+//		test += "Customer1 info:" + System.lineSeparator();
+//		test += "------------" + System.lineSeparator();
+//		test += customer1.getName() + System.lineSeparator();
+//		System.out.println(customer1.getPhone());
+//		System.out.println(customer1.getAddress());
+//		System.out.println(customer1.getEmail());
+//		System.out.println(customer1.getPostalCode());
+//		System.out.println(customer1.getCustomerID());
+//		System.out.println(customer1.getDiscount());
+//		System.out.println();
+//		System.out.println("Customer2 info:");
+//		System.out.println("------------");
+//		System.out.println(customer2.getName());
+//		System.out.println(customer2.getPhone());
+//		System.out.println(customer2.getAddress());
+//		System.out.println(customer2.getEmail());
+//		System.out.println(customer2.getPostalCode());
+//		System.out.println(customer2.getCustomerID());
+//		System.out.println(customer2.getDiscount());
+//		System.out.println();
+//		System.out.println("Customer3 info:");
+//		System.out.println("------------");
+//		System.out.println(customer3.getName());
+//		System.out.println(customer3.getPhone());
+//		System.out.println(customer3.getAddress());
+//		System.out.println(customer3.getEmail());
+//		System.out.println(customer3.getPostalCode());
+//		System.out.println(customer3.getCustomerID());
+//		System.out.println(customer3.getDiscount());
+//		System.out.println();
+		return test;
+		
+//		System.out.println();
+//		System.out.println("TEST DATA GENERATED");
+		
 	}
 }

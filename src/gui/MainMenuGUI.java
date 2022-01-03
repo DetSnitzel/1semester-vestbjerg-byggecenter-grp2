@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainMenuGUI extends JFrame {
-	private static TryMee tryMee;
+	private TryMee tryMee;
 
 	private JPanel contentPane;
 
@@ -98,7 +98,12 @@ public class MainMenuGUI extends JFrame {
 	}
 
 	private void generateTestData() {
-//		tryMee.generateTestData();
+		tryMee = new TryMee();
+		String test = tryMee.generateTestData();
+		JOptionPane.showMessageDialog(null, test);
+		
+		
+		
 		
 	}
 
