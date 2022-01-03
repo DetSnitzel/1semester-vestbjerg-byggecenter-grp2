@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import model.Person;
 
-/**
- * This class stores the data from customers after they are created.
- */
+
 public class CustomerContainer {
 	private static CustomerContainer instance;
 	private ArrayList<Person> customers;
@@ -20,7 +18,9 @@ public class CustomerContainer {
 	}
 
 	/**
-	 * Met
+	 * Method that creates an instance of this class. There can only be one instance
+	 * at a time because of Singleton.
+	 * 
 	 * @return an instance of CustomerContainer
 	 */
 	public static CustomerContainer getInstance() {
@@ -30,6 +30,12 @@ public class CustomerContainer {
 		return instance;
 	}
 
+	/**
+	 * Method that searches for customer through their phone number.
+	 * 
+	 * @param phone
+	 * @return customer
+	 */
 	public Person findCustomerByPhone(String phone) {
 		Person customer = null;
 		boolean goon = true;
@@ -44,6 +50,11 @@ public class CustomerContainer {
 		return customer;
 	}
 
+	/**
+	 * Method that adds an instance of customer class to this container class.
+	 * 
+	 * @param customer
+	 */
 	public void addCustomer(Person customer) {
 		customers.add(customer);
 	}
