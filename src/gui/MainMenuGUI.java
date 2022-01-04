@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ctr.Controller;
 //import ctr.Controller;
 import tui.TryMe;
 
@@ -83,7 +84,7 @@ public class MainMenuGUI extends JFrame {
 		JButton btnOrderMenu = new JButton("Order Menu");
 		btnOrderMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				orderMenu();
+				orderMenuClicked();
 			}
 		});
 		panel_1.add(btnOrderMenu);
@@ -95,6 +96,8 @@ public class MainMenuGUI extends JFrame {
 			}
 		});
 		panel_1.add(btnLeasingMenu);
+		
+		
 	}
 
 	private void generateTestData() {
@@ -126,9 +129,19 @@ public class MainMenuGUI extends JFrame {
 //		
 //		}
 
-	private void orderMenu() {
-		// TODO Auto-generated method stub
-
+	private void orderMenuClicked() {
+		Controller ctrl = new Controller();
+		String name = JOptionPane.showInputDialog(this, "New product list name: ");
+		ctrl.createNewList(name);
+		OrderMenu om = new OrderMenu(ctrl);
+		om.setOrderMenuForCallBack(this);
+		om.setVisible(true);
+		refresh();
+		
+		
+		
+		
+		
 	}
 
 }
