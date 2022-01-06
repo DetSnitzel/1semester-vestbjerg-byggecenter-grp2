@@ -7,11 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.OrderController;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class OrderMenu extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private OrderController ctrl;
 
 	/**
 	 * Launch the application.
@@ -29,6 +35,12 @@ public class OrderMenu extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
+
+	public OrderMenu(OrderController ctrl) {
+		this();
+		init(ctrl);
+	}
+
 	public OrderMenu() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -37,8 +49,13 @@ public class OrderMenu extends JDialog {
 		contentPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		{
 			JButton btnCreateOrder = new JButton("Create order");
+			btnCreateOrder.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					createOrderClicked();
+				}
+			});
 			contentPanel.add(btnCreateOrder);
-			createOrder();
+			
 		}
 		{
 			JButton btnFindOrder = new JButton("Find order");
@@ -60,12 +77,18 @@ public class OrderMenu extends JDialog {
 		}
 	}
 
-	private void createOrder() {
-		
+	private void init(OrderController ctrl) {
+		this.ctrl = ctrl;
 	}
 
-	public void setOrderMenuForCallBack(MainMenuGUI mmg) {
-		
+	private void createOrderClicked() {
+		ctrl.createOrder();
+		CustomerGUI cg = new CustomerGUI(ctrl);
+		cg.setVisible(true);
+	
+	
+	
 	}
+
 
 }

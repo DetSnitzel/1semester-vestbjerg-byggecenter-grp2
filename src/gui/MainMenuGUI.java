@@ -8,8 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ctr.Controller;
-//import ctr.Controller;
+import controller.OrderController;
 import tui.TryMe;
 
 import javax.swing.JButton;
@@ -96,18 +95,14 @@ public class MainMenuGUI extends JFrame {
 			}
 		});
 		panel_1.add(btnLeasingMenu);
-		
-		
+
 	}
 
 	private void generateTestData() {
 		tryMee = new TryMee();
 		String test = tryMee.generateTestData();
-		JOptionPane.showMessageDialog(null, test);
-		
-		
-		
-		
+		JOptionPane.showMessageDialog(this, test);
+
 	}
 
 	private void leasingMenu() {
@@ -123,25 +118,21 @@ public class MainMenuGUI extends JFrame {
 
 	}
 
-//		private void customerMenuClicked() {
-//			JOptionPane.showMessageDialog(this, "Hasn't been implemented yet");
-//		
-//		
-//		}
+	private void customerMenuClicked() {
+		JOptionPane.showMessageDialog(this, "Hasn't been implemented yet");
+
+	}
 
 	private void orderMenuClicked() {
-		Controller ctrl = new Controller();
-		String name = JOptionPane.showInputDialog(this, "New product list name: ");
-		ctrl.createNewList(name);
+
+		OrderController ctrl = new OrderController();
 		OrderMenu om = new OrderMenu(ctrl);
-		om.setOrderMenuForCallBack(this);
 		om.setVisible(true);
-		refresh();
-		
-		
-		
-		
-		
+		this.dispose();
+//		refresh();
+
 	}
 
 }
+
+
