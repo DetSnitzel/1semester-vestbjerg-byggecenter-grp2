@@ -53,5 +53,12 @@ public class OrderController {
 		return orderContainer.addOrder(order);
 	}
 	
+	public Order getOrder() {
+		return order;
+	}
+	
+	public Product findProductByBarcode(String barcode) {
+		return productController.findProductByBarcode(barcode);
+	}
 
 }
