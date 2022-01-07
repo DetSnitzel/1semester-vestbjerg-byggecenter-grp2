@@ -62,8 +62,14 @@ public class OrderMenu extends JDialog {
 	}
 
 	public OrderMenu() {
+		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
 		setBounds(100, 100, 450, 300);
 
+		JPanel contentPane = (JPanel) getContentPane();
+		contentPane.setBorder(new EmptyBorder(10,10,10,10));
+		
+		
+		
 		JPanel panelButtons = new JPanel();
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 

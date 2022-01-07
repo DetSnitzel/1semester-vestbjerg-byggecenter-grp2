@@ -19,13 +19,14 @@ import java.awt.event.ActionEvent;
 
 public class MainMenuGUI extends JFrame {
 	private TryMee tryMee;
-
+	private TestData testData;
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		new TryMee().generateTestData();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -52,13 +53,13 @@ public class MainMenuGUI extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
 
-		JButton btnTestData = new JButton("Generate Test Data");
-		btnTestData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				generateTestData();
-			}
-		});
-		panel.add(btnTestData);
+//		JButton btnTestData = new JButton("Generate Test Data");
+//		btnTestData.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				generateTestData();
+//			}
+//		});
+//		panel.add(btnTestData);
 
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -96,12 +97,7 @@ public class MainMenuGUI extends JFrame {
 		});
 		panel_1.add(btnLeasingMenu);
 
-	}
-
-	private void generateTestData() {
-		tryMee = new TryMee();
-		String test = tryMee.generateTestData();
-		JOptionPane.showMessageDialog(this, test);
+	
 
 	}
 
@@ -124,11 +120,12 @@ public class MainMenuGUI extends JFrame {
 	}
 
 	private void orderMenuClicked() {
-
+		
 		OrderController ctrl = new OrderController();
 		OrderMenu om = new OrderMenu(ctrl);
 		om.setVisible(true);
 		this.dispose();
+
 //		refresh();
 
 	}
