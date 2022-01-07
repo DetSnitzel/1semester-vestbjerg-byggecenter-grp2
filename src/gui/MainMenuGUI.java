@@ -26,7 +26,7 @@ public class MainMenuGUI extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		new TryMee().generateTestData();
+	//	new TryMee().generateTestData();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -120,7 +120,7 @@ public class MainMenuGUI extends JFrame {
 	}
 
 	private void orderMenuClicked() {
-		
+		new TestData().setVisible(true);
 		OrderController ctrl = new OrderController();
 		OrderMenu om = new OrderMenu(ctrl);
 		om.setVisible(true);

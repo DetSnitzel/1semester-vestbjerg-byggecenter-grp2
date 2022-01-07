@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class stores the data from products after they are created.
@@ -56,6 +57,10 @@ public class ProductContainer {
 
 		}
 		return product;
+	}
+
+	public List<Product> findAll() {
+		return new ArrayList<>(products);
 	}
 
 }

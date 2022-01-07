@@ -1,4 +1,6 @@
 package controller;
+import java.util.List;
+
 import model.Product;
 import model.ProductContainer;
 
@@ -12,5 +14,11 @@ public class ProductController {
 		ProductContainer pc = ProductContainer.getInstance();
 		product = pc.findProductByBarcode(barcode);
 		return product;
+	}
+
+
+
+	public List<Product> findAll() {
+		return ProductContainer.getInstance().findAll();
 	}
 }

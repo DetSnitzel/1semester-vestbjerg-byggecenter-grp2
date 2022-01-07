@@ -1,7 +1,10 @@
 package controller;
+import java.util.List;
+
 import model.CustomerContainer;
 import model.Person;
 import model.PrivateCustomer;
+import model.ProductContainer;
 
 public class CustomerController {
 	private CustomerContainer customerContainer;
@@ -19,5 +22,10 @@ public class CustomerController {
 	 */
 	public Person findCustomerByPhone(String phone) {
 		return customerContainer.findCustomerByPhone(phone);
+	}
+
+
+	public List<Person> findAll() {
+		return CustomerContainer.getInstance().findAll();
 	}
 }

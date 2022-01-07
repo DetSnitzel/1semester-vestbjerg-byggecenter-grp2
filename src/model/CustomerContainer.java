@@ -1,9 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Person;
-
 
 public class CustomerContainer {
 	private static CustomerContainer instance;
@@ -58,4 +58,9 @@ public class CustomerContainer {
 	public void addCustomer(Person customer) {
 		customers.add(customer);
 	}
+
+	public List<Person> findAll() {
+		return new ArrayList<>(customers);
+	}
+
 }
