@@ -84,17 +84,23 @@ public class TestData extends JFrame {
 		private void generateTestData() {
 			tryMe = new TryMee();
 			String test = tryMe.generateTestData();
-			ProductController pCtrl = new ProductController();
-			List<Product> products = pCtrl.findAll();
-			DefaultListModel<String> model = new DefaultListModel<>(); //TODO typeparamatisere product, lav renderer
-			for(Product p : products) {
-				model.addElement(p.getName() + " " + p.getBarcode());
-			}
 			CustomerController cCtrl = new CustomerController();
 			List<Person> customers = cCtrl.findAll();
+			DefaultListModel<String> model = new DefaultListModel<>(); //TODO typeparamatisere product, lav renderer
 			for(Person c : customers) {
 				model.addElement(c.getName() + " " + c.getPhone());
 			}
+			ProductController pCtrl = new ProductController();
+			List<Product> products = pCtrl.findAll();
+//			DefaultListModel<String> model = new DefaultListModel<>(); //TODO typeparamatisere product, lav renderer
+			for(Product p : products) {
+				model.addElement(p.getName() + " " + p.getBarcode());
+			}
+//			CustomerController cCtrl = new CustomerController();
+//			List<Person> customers = cCtrl.findAll();
+//			for(Person c : customers) {
+//				model.addElement(c.getName() + " " + c.getPhone());
+//			}
 //			JOptionPane.showMessageDialog(this, test);	
 			list.setModel(model);
 
