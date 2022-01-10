@@ -6,6 +6,7 @@ public class TryMee {
 	private PrivateCustomer customer1;
 	private PrivateCustomer customer2;
 	private PrivateCustomer customer3;
+	private PrivateCustomer customer4;
 	private Product product1;
 	private Product product2;
 	private Product product3;
@@ -28,6 +29,7 @@ public class TryMee {
 		customer1 = new PrivateCustomer("Bob", "30222998", "Bobvej 69", "Bob@bob.dk", "8800", "1", 10);
 		customer2 = new PrivateCustomer("Anna", "30231854", "Annavej 69", "Analgren@grenmail.dk", "9000", "2", 15);
 		customer3 = new PrivateCustomer("Caroline", "53352747", "Carovej 69", "Caro@bernmail.dk", "9220", "3", 20);
+		customer4 = new PrivateCustomer("","","","","","", 0);
 		
 		product1 = new Product("Hammer", "101", 50);
 		product2 = new Product("Sav", "202", 100);
@@ -36,6 +38,7 @@ public class TryMee {
 		cc.addCustomer(customer1);
 		cc.addCustomer(customer2);
 		cc.addCustomer(customer3);
+		cc.addCustomer(customer4);
 	
 		
 		pc.addProduct(product1);
@@ -44,6 +47,7 @@ public class TryMee {
 		privateCustomerList.add(customer1);
 		privateCustomerList.add(customer2);
 		privateCustomerList.add(customer3);
+		privateCustomerList.add(customer4);
 		productList.add(product1);
 		productList.add(product2);
 		productList.add(product3);
