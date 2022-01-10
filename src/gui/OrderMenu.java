@@ -29,6 +29,7 @@ import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import controller.CustomerController;
 
 public class OrderMenu extends JDialog {
 	private OrderController ctrl;
@@ -71,6 +72,8 @@ public class OrderMenu extends JDialog {
 		
 		
 		JPanel panelButtons = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panelButtons.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
 		JButton btnCancel = new JButton("Cancel");
@@ -83,9 +86,9 @@ public class OrderMenu extends JDialog {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_panel.rowHeights = new int[] { 0, 0, 209, 0 };
+		gbl_panel.rowHeights = new int[] { 0, 0, 0, 209, 0 };
 		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
 		JLabel lblSearchCustomerByPhone = new JLabel("Add customer by phone:");
@@ -107,18 +110,33 @@ public class OrderMenu extends JDialog {
 		txtCustomerByPhone.setColumns(10);
 
 		JButton btnAddCustomer = new JButton("Add");
+		btnAddCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addCustomerClicked(); 
+			}
+		});
+		
 		GridBagConstraints gbc_btnAddCustomer = new GridBagConstraints();
 		gbc_btnAddCustomer.insets = new Insets(0, 0, 5, 0);
 		gbc_btnAddCustomer.gridx = 4;
 		gbc_btnAddCustomer.gridy = 0;
 		panel.add(btnAddCustomer, gbc_btnAddCustomer);
+		
+		JLabel lblShowCustomerName = new JLabel("");
+		GridBagConstraints gbc_lblShowCustomerName = new GridBagConstraints();
+		gbc_lblShowCustomerName.insets = new Insets(0, 0, 5, 0);
+		gbc_lblShowCustomerName.gridx = 4;
+		gbc_lblShowCustomerName.gridy = 1;
+		panel.add(lblShowCustomerName, gbc_lblShowCustomerName);
+		//lblShowCustomerName.setText(getName()); 
+		//lblShowCustomerName.setText(getName());
 
 		JLabel lblSearchProductByBarcode = new JLabel("Add product by barcode:");
 		GridBagConstraints gbc_lblSearchProductByBarcode = new GridBagConstraints();
 		gbc_lblSearchProductByBarcode.anchor = GridBagConstraints.EAST;
 		gbc_lblSearchProductByBarcode.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSearchProductByBarcode.gridx = 0;
-		gbc_lblSearchProductByBarcode.gridy = 1;
+		gbc_lblSearchProductByBarcode.gridy = 2;
 		panel.add(lblSearchProductByBarcode, gbc_lblSearchProductByBarcode);
 
 		txtProductBarcode = new JTextField();
@@ -126,7 +144,7 @@ public class OrderMenu extends JDialog {
 		gbc_txtProductBarcode.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtProductBarcode.insets = new Insets(0, 0, 5, 5);
 		gbc_txtProductBarcode.gridx = 1;
-		gbc_txtProductBarcode.gridy = 1;
+		gbc_txtProductBarcode.gridy = 2;
 		panel.add(txtProductBarcode, gbc_txtProductBarcode);
 		txtProductBarcode.setColumns(10);
 
@@ -135,7 +153,7 @@ public class OrderMenu extends JDialog {
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 1;
+		gbc_lblNewLabel.gridy = 2;
 		panel.add(lblNewLabel, gbc_lblNewLabel);
 
 		txtQuantity = new JTextField();
@@ -143,7 +161,7 @@ public class OrderMenu extends JDialog {
 		gbc_txtQuantity.insets = new Insets(0, 0, 5, 5);
 		gbc_txtQuantity.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtQuantity.gridx = 3;
-		gbc_txtQuantity.gridy = 1;
+		gbc_txtQuantity.gridy = 2;
 		panel.add(txtQuantity, gbc_txtQuantity);
 		txtQuantity.setColumns(10);
 
@@ -158,7 +176,7 @@ public class OrderMenu extends JDialog {
 		GridBagConstraints gbc_btnAddProduct = new GridBagConstraints();
 		gbc_btnAddProduct.insets = new Insets(0, 0, 5, 0);
 		gbc_btnAddProduct.gridx = 4;
-		gbc_btnAddProduct.gridy = 1;
+		gbc_btnAddProduct.gridy = 2;
 		panel.add(btnAddProduct, gbc_btnAddProduct);
 
 		JLabel lblLines = new JLabel("Lines:");
@@ -166,7 +184,7 @@ public class OrderMenu extends JDialog {
 		gbc_lblLines.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblLines.insets = new Insets(0, 0, 0, 5);
 		gbc_lblLines.gridx = 0;
-		gbc_lblLines.gridy = 2;
+		gbc_lblLines.gridy = 3;
 		panel.add(lblLines, gbc_lblLines);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -174,7 +192,7 @@ public class OrderMenu extends JDialog {
 		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;
-		gbc_scrollPane.gridy = 2;
+		gbc_scrollPane.gridy = 3;
 		panel.add(scrollPane, gbc_scrollPane);
 
 		tblOrderLines = new JTable();
@@ -183,6 +201,7 @@ public class OrderMenu extends JDialog {
 		{
 		}
 	}
+
 
 	private void init(OrderController ctrl) {
 		this.ctrl = ctrl;
@@ -214,4 +233,21 @@ public class OrderMenu extends JDialog {
 		refresh();
 
 	}
+	
+	private void addCustomerClicked() {
+		String phone = txtCustomerByPhone.getText();
+		if(ctrl.addCustomer(phone) != null) {
+			try {
+				ctrl.addCustomer(phone);
+				//lblShowCustomerName.setText(getName());
+			} catch(NumberFormatException nfe) {
+				JOptionPane.showMessageDialog(this, "You must enter a number");
+			}
+		} else {
+			JOptionPane.showMessageDialog(this, "This number does not exist");
+		} 
+		refresh();
+		
+	}
+	
 }
