@@ -21,7 +21,7 @@ public class MainMenuGUI extends JFrame {
 	private TryMee tryMee;
 	private TestData testData;
 	private JPanel contentPane;
-
+	private static boolean dataProduced; 
 	/**
 	 * Launch the application.
 	 */
@@ -120,7 +120,10 @@ public class MainMenuGUI extends JFrame {
 	}
 
 	private void orderMenuClicked() {
-		new TestData().setVisible(true);
+		if(!dataProduced) {
+			new TestData().setVisible(true);
+			dataProduced = true; 
+		}
 		OrderController ctrl = new OrderController();
 		OrderMenu om = new OrderMenu(ctrl);
 		om.setVisible(true);
@@ -129,6 +132,5 @@ public class MainMenuGUI extends JFrame {
 //		refresh();
 
 	}
-	// test xD
 
 }

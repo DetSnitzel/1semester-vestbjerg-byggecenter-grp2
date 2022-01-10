@@ -39,6 +39,8 @@ public class OrderMenu extends JDialog {
 	private JTextField txtQuantity;
 	private JTable tblOrderLines;
 	private OrderLineTableModel oltm;
+	private JTextField txtCustomerName;
+	private EndOrder endOrder; 
 
 	/**
 	 * Launch the application.
@@ -77,9 +79,19 @@ public class OrderMenu extends JDialog {
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancelClicked(); 
+			}
+		});
 		panelButtons.add(btnCancel);
 
 		JButton btnCreateOrder = new JButton("Create order");
+		btnCreateOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createOrderClicked();
+			}
+		});
 		panelButtons.add(btnCreateOrder);
 
 		JPanel panel = new JPanel();
@@ -122,12 +134,16 @@ public class OrderMenu extends JDialog {
 		gbc_btnAddCustomer.gridy = 0;
 		panel.add(btnAddCustomer, gbc_btnAddCustomer);
 		
-		JLabel lblShowCustomerName = new JLabel("");
-		GridBagConstraints gbc_lblShowCustomerName = new GridBagConstraints();
-		gbc_lblShowCustomerName.insets = new Insets(0, 0, 5, 0);
-		gbc_lblShowCustomerName.gridx = 4;
-		gbc_lblShowCustomerName.gridy = 1;
-		panel.add(lblShowCustomerName, gbc_lblShowCustomerName);
+		txtCustomerName = new JTextField();
+		txtCustomerName.setEditable(false);
+		GridBagConstraints gbc_txtCustomerName = new GridBagConstraints();
+		gbc_txtCustomerName.gridwidth = 3;
+		gbc_txtCustomerName.insets = new Insets(0, 0, 5, 5);
+		gbc_txtCustomerName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCustomerName.gridx = 1;
+		gbc_txtCustomerName.gridy = 1;
+		panel.add(txtCustomerName, gbc_txtCustomerName);
+		txtCustomerName.setColumns(10);
 		//lblShowCustomerName.setText(getName()); 
 		//lblShowCustomerName.setText(getName());
 
@@ -202,7 +218,6 @@ public class OrderMenu extends JDialog {
 		}
 	}
 
-
 	private void init(OrderController ctrl) {
 		this.ctrl = ctrl;
 		ctrl.createOrder();
@@ -237,17 +252,30 @@ public class OrderMenu extends JDialog {
 	private void addCustomerClicked() {
 		String phone = txtCustomerByPhone.getText();
 		if(ctrl.addCustomer(phone) != null) {
-			try {
 				ctrl.addCustomer(phone);
-				//lblShowCustomerName.setText(getName());
-			} catch(NumberFormatException nfe) {
-				JOptionPane.showMessageDialog(this, "You must enter a number");
-			}
+				txtCustomerName.setText(ctrl.getOrder().getCustomer().getName());
 		} else {
 			JOptionPane.showMessageDialog(this, "This number does not exist");
 		} 
 		refresh();
 		
 	}
+	
+
+	private void cancelClicked() {
+		MainMenuGUI mm = new MainMenuGUI();
+		mm.setVisible(true);
+		this.dispose();
+		
+	}
+	
+	private void createOrderClicked() {
+		EndOrder eo = new EndOrder(ctrl);
+		setCustomerDetails();
+		eo.setVisible(true);
+		this.dispose();
+		
+	}
+	
 	
 }
