@@ -50,5 +50,3 @@ public class CreateOrder extends JFrame {
 	}
 
 }
-
-//test
