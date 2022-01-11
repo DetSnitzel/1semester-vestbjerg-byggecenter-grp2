@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.OrderController;
+import model.CustomerContainer;
 import model.OrderLine;
+import model.Person;
+import model.PrivateCustomer;
 
 import java.awt.GridBagLayout;
 import javax.swing.JScrollPane;
@@ -183,9 +186,17 @@ public class EndOrder extends JDialog {
 	}
 	
 	public void setCustomerDetails() {
-		//txtID.setText(getCustomerID);
 		txtName.setText(ctrl.getOrder().getCustomer().getName());
+		txtPhone.setText(ctrl.getOrder().getCustomer().getPhone());
 		
-		//txtPhone.setText();
+		String total = Double.toString(ctrl.getOrder().getTotal());
+        txtTotal.setText(total);
+        
+        Person currPerson = ctrl.getOrder().getCustomer();
+        if(currPerson instanceof PrivateCustomer) {
+        	PrivateCustomer currCustomer = (PrivateCustomer) currPerson;
+        	txtID.setText(currCustomer.getCustomerID());
+        }
+        
 	}	
 }

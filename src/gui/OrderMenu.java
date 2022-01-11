@@ -271,7 +271,7 @@ public class OrderMenu extends JDialog {
 	
 	private void createOrderClicked() {
 		EndOrder eo = new EndOrder(ctrl);
-		setCustomerDetails();
+		eo.setCustomerDetails();
 		eo.setVisible(true);
 		this.dispose();
 		
