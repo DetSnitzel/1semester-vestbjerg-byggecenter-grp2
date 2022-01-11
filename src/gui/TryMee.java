@@ -10,6 +10,9 @@ public class TryMee {
 	private Product product1;
 	private Product product2;
 	private Product product3;
+	private Product product4;
+	private Product product5;
+	private Product product6;
 	
 	public TryMee() {
 		
@@ -34,6 +37,9 @@ public class TryMee {
 		product1 = new Product("Hammer", "101", 50);
 		product2 = new Product("Sav", "202", 100);
 		product3 = new Product("Kegle", "303", 400);
+		product4 = new Product("Metalstang", "404", 225);
+		product5 = new Product("Borehammer", "505", 2000);
+		product6 = new Product("Rundsav", "606", 4500);
 		
 		cc.addCustomer(customer1);
 		cc.addCustomer(customer2);
@@ -44,6 +50,9 @@ public class TryMee {
 		pc.addProduct(product1);
 		pc.addProduct(product2);
 		pc.addProduct(product3);
+		pc.addProduct(product4);
+		pc.addProduct(product5);
+		pc.addProduct(product6);
 		privateCustomerList.add(customer1);
 		privateCustomerList.add(customer2);
 		privateCustomerList.add(customer3);
@@ -51,6 +60,9 @@ public class TryMee {
 		productList.add(product1);
 		productList.add(product2);
 		productList.add(product3);
+		productList.add(product4);
+		productList.add(product5);
+		productList.add(product6);
 		
 		String test = "";
 	
