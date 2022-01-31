@@ -188,15 +188,16 @@ public class EndOrder extends JDialog {
 	public void setCustomerDetails() {
 		txtName.setText(ctrl.getOrder().getCustomer().getName());
 		txtPhone.setText(ctrl.getOrder().getCustomer().getPhone());
-		
-		String total = Double.toString(ctrl.getOrder().getTotal());
-        txtTotal.setText(total);
-        
-        Person currPerson = ctrl.getOrder().getCustomer();
-        if(currPerson instanceof PrivateCustomer) {
-        	PrivateCustomer currCustomer = (PrivateCustomer) currPerson;
-        	txtID.setText(currCustomer.getCustomerID());
-        }
+
+		Person currPerson = ctrl.getOrder().getCustomer();
+		if (currPerson instanceof PrivateCustomer) {
+			PrivateCustomer currCustomer = (PrivateCustomer) currPerson;
+			txtID.setText(currCustomer.getCustomerID());
+			double parsedValue = Double.valueOf(currCustomer.getDiscount());
+			double value = ctrl.getOrder().getTotal() * parsedValue / 100;
+			String total = Double.toString(ctrl.getOrder().getTotal() - value);
+			txtTotal.setText(total);
+		}}
         
 	}	
-}
+
